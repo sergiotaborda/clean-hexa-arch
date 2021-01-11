@@ -1,0 +1,124 @@
+@import '../tools/tools';
+
+.command {
+   // layout
+  display: flex;
+  align-items: center;
+  min-height: fixed(30);
+
+  @include padding(smallest());
+  @include horizontal-padding(smaller());
+
+  // style
+  
+  @include pill-shape(100%);
+  @include interaction(clickable());
+
+  @include component-color("button", standard());
+
+  // states
+  &.state-compacted {
+   @include square-shape(100%);
+   @include padding(smallest());
+  }
+
+  &.state-expandable {
+   flex-direction: column;
+   height: unset;
+
+   @include vertical-padding(smaller());
+   padding-bottom: unset;
+  }
+
+  &.state-primary {
+   @include component-color("button", primary());
+  }
+  
+  &.state-secondary {
+   @include component-color("button", secondary());
+  }
+
+  &:hover {
+    @include component-color("button", hover());
+  }
+
+  &[disabled] {
+    @include interaction(forbidden());
+    @include component-color("button", disabled());
+  }
+  
+  &.with-icon {
+    @include padding(unset);
+    border: unset;
+    
+    &:hover {
+       @include component-color("button", standard());
+        
+        &.state-primary {
+         @include component-color("button", primary());
+        }
+      
+        &.state-secondary {
+         @include component-color("button", secondary());
+        }
+    }
+  }
+  
+  &.with-icon.with-caption {
+    @include padding(smallest());
+    @include horizontal-padding(smaller());
+  }
+}
+
+
+.command--menu {
+   
+}
+
+.command--submenu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  top: fixed(5);
+
+
+  @include padding(smaller());
+  @include horizontal-padding(small());
+  @include z-index();
+   
+}
+
+  .command__caption {
+     // layout 
+    min-width: fixed(50);
+    display: block;
+    @include horizontal-padding(smaller());
+    margin-top: fixed(2);
+    flex-grow: 1;
+    text-align: left;
+
+    // style 
+
+    @include font-size(default());
+
+    &.is-compacted-state {
+      @include font-size(smaller());
+    }
+  }
+
+  .command__icon {
+     // layout
+    display: block;
+    padding-bottom: unset;
+    @include square-shape(icon-size());
+
+    &.is-compacted-state {
+      @include square-shape(icon-size(small()));
+    }
+
+    // no-style
+
+    
+  }

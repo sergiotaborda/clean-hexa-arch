@@ -1,0 +1,36 @@
+//---
+//-	A layout that splits the horizontal space in equal parts
+//---
+.horizontal-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  &.must-expand-max-state {
+    height: 100%;
+  }
+}
+
+  .horizontal-layout__item {
+    flex: 1;
+
+    &.must-expand-max-state {
+      height: 100vh;
+    }
+
+    &.is-three-tenths-state {
+      flex: 0.3;
+    }
+
+    &.is-seven-tenths-state {
+      flex: 0.7;
+    }
+
+    &.must-expand-double-state {
+      flex: 2;
+    }
+
+    &.must-fit-content-state {
+      flex-grow: 0;
+    }
+  }

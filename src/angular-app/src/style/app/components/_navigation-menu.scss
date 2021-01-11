@@ -1,0 +1,63 @@
+@import "../../toolkit/tools/tools";
+
+.navigation-menu {
+  // layout 
+  height: fixed(50);
+  
+  @include component-color("navigation", standard());
+}
+
+  .navigation-menu__title {
+    @include font-size(default());
+    @include font-weight(big());
+  }
+
+  .navigation-menu__caption {
+    @include font-size(smaller());
+    @include font-weight(big());
+  }
+
+  .navigation-menu__version {
+
+    @include font-size(smaller());
+    @include font-weight(default());
+    white-space: nowrap;
+  }
+  
+  .navigation-menu__logo {
+    @include square-shape(fixed(30));
+  }
+
+  .navigation-menu__icon {
+    display: block;
+    padding-bottom: unset;
+    @include square-shape(fixed(20));
+  }
+
+
+  .navigation-menu__separator {
+    @include square-shape(fixed(10));
+  }
+
+  .navigation-menu__button {
+    display: flex;
+    align-items: center;
+    height: calc(100% - 1px);
+  }
+
+  .navigation-menu__user {
+   
+    @include padding(smallest());
+    @include horizontal-padding(smaller());
+    
+    padding-right: unset;
+    height: calc(100% - 1px);
+    display: flex;
+    align-items: center;
+  }
+
+  .navigation-menu__brand {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }

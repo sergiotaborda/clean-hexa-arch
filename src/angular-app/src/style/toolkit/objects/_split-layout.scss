@@ -1,0 +1,18 @@
+@import '../tools/functions';
+
+.split-layout {
+  @include square-shape(100%);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+  .split-layout__left {
+
+  }
+
+  .split-layout__right {
+
+  }
+

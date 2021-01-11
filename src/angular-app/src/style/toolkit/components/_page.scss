@@ -1,0 +1,32 @@
+@import '../tools/tools';
+
+.page {
+	width: 100%;
+}
+
+  .page__border {
+    @include gutter-width;
+  }
+
+  .page__top {
+    @include usable-width;
+  }
+
+  .page__content {
+    @include usable-width;
+  }
+
+  .page__navigation {
+    width: 100%;
+
+    &.state-sticky {
+      top: 0;
+      position: sticky;
+    }
+  }
+
+  .page__scrollable {
+    max-height: relative-height(390);
+    overflow-y: auto;
+    position: relative;
+  }

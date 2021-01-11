@@ -1,0 +1,18 @@
+<div class="wait-panel wait-panel-layout" [class.is-total-overlay-state]="isTotalOverlay">
+  <div class="wait-panel__content wait-panel-layout__content">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="wait-panel__glass wait-panel-layout__glass" [class.is-total-overlay-state]="isTotalOverlay" *ngIf="isVisible">
+    <div class="wait-panel-layout__front">
+      <div class="wait-panel-layout__area">
+        <div class="wait-panel-layout__separator" [class.is-overlay-all-page-state]="isTotalOverlay"></div>
+        <div class="wait-panel__spinner wait-panel-layout__spinner">
+          <!-- <spinner block="wait-panel__animation wait-panel-layout__animation"></spinner> -->
+          <!-- <icon class="wait-panel__logo wait-panel-layout__logo" type="app-logo-inverse"></icon> -->
+        </div>
+        <span class="wait-panel__description wait-panel-layout__description">{{'WAIT.DESCRIPTION' | translate }}</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,193 @@
+.datagrid {
+   // layout
+     width: calc(100% - 1px);
+   // style
+  border-collapse: collapse;
+}
+  .datagrid__content {
+    width: calc(100% - 1px);
+
+    &.is-sticky-state {
+      position: sticky;
+      top: 0;
+    }
+  }
+  
+  .datagrid__header {
+    // layout 
+
+    @include padding(smallest());
+    height: sizeOf("column-height", small());
+  
+    // style
+    @include component-color("grid-header", standard());
+     
+    @include font-size(smaller());
+    @include font-weight(big());
+      
+    text-align: left;
+
+    &.is-compacted-state {
+      @include font-size(smallest());
+    }
+  }
+
+  .datagrid__row {
+   // layout 
+   height: sizeOf("column-height", default());
+   
+   // style
+       
+    @include font-size(smallest());
+    @include font-weight(default());
+    
+    
+    @include border-size(unset, unset, default(), unset);
+    @include component-color("grid-row", standard());
+
+    &.is-compacted-state {
+      // layout
+        height: sizeOf("column-height", smaller());
+      
+      // style   
+      @include font-size(smallest());
+      @include font-weight(default());
+    }
+
+  }
+
+  .datagrid__column {
+   // layout 
+    @include horizontal-padding(smaller());
+   
+   // style
+    @include component-color("grid-column", standard());
+
+    text-align: left;
+
+    &.is-status-column-state {
+      width: columnSizeOf("status");
+    }
+
+    &.is-type-column-state {
+      width: columnSizeOf("type");
+      text-align: center;
+    }
+
+    &.is-code-column-state {
+      width: columnSizeOf("code");
+      text-align: left;
+    }
+
+    &.is-date-column-state {
+      width: columnSizeOf("date");
+      text-align: center;
+    }
+
+    &.is-description-column-state {
+      max-width: columnSizeOf("description");
+    }
+
+
+    &.is-number-column-state {
+      width: columnSizeOf("number");
+      text-align: right;
+    }
+
+    &.is-amount-column-state {
+      width: columnSizeOf("amount");
+      text-align: right;
+    }
+
+    &.is-option-column-state {
+      text-align: center;
+    }
+    
+   &.is-input-column-state {
+      width: columnSizeOf("input");
+    }
+
+    &.is-sticky-state {
+      position: sticky;
+      top: fixed(0);
+    }
+  }
+  
+  .datagrid__column-content {
+    display: flex;
+
+    &.is-number-column-state {
+      justify-content: flex-end;
+    }
+
+    &.is-date-column-state {
+      justify-content: center;
+    }
+
+    &.is-type-column-state {
+      justify-content: space-around;
+    }
+
+    &.is-option-column-state {
+      justify-content: center;
+    }
+  }
+
+  .datagrid__cell {
+   // layout 
+     @include padding(smallest());
+     @include horizontal-padding(smaller());
+   // style
+   
+     @include component-color("grid-cell", standard());
+    text-align: left;
+    
+    &.is-status-column-state {
+      width: columnSizeOf("status");
+    }
+
+    &.is-type-column-state {
+      width: columnSizeOf("type");
+      text-align: center;
+    }
+
+    &.is-code-column-state {
+      width: columnSizeOf("code");
+      text-align: left;
+    }
+
+    &.is-date-column-state {
+      width: columnSizeOf("date");
+      text-align: center;
+    }
+
+    &.is-name-column-state {
+    }
+
+    &.is-description-column-state {
+      max-width: columnSizeOf("description");
+    }
+
+    &.is-number-column-state {
+      width: columnSizeOf("number");
+      text-align: right;
+    }
+
+    &.is-amount-column-state {
+      width: columnSizeOf("amount");
+      text-align: right;
+    }
+
+    &.is-actions-column-state {
+    }
+
+    &.is-option-column-state {
+      text-align: center;
+    }
+    
+    &.is-input-column-state {
+      width: columnSizeOf("input");
+    }
+  }
+  
+

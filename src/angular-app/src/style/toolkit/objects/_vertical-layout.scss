@@ -1,0 +1,30 @@
+//---
+//-	A layout that splits the vertical space in equal parts
+//---	
+.vertical-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+  .vertical-layout__item {
+    flex: 1;
+
+    &.must-expand-max-state {
+      height: 100vw;
+    }
+
+    &.must-fit-content-state {
+      flex-grow: 0;
+    }
+
+    &.must-expand-double-state {
+      flex: 2;
+    }
+
+    //obsolete: will be removed
+    &.is-three-tenths-state {
+      flex: 0.3;
+    }
+
+  }
+

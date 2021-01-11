@@ -1,0 +1,76 @@
+.field {
+
+  @include field-width(default());
+  @include component-color("field", standard());
+
+  @include border-size(default());
+  @include border-rounding(default());
+
+  &.state-readonly {
+      display: flex;
+      align-items: center;
+  }
+
+
+   &.state-required {
+      @include component-color("field", required());
+
+      &.state-filled {
+         @include component-color("field", standard());
+      }
+   }
+
+   &.state-readonly {
+      border: unset;
+   }
+
+   &.state-disabled {
+      @include component-color("field", disabled());
+   }
+}
+
+   .field__input {
+
+      @include component-color("field", standard());
+      @include pill-shape(100%);
+
+      @include font-size(smaller());
+      @include font-weight(default());
+
+      border: unset;
+
+      @include horizontal-padding(smallest());
+
+      &.state-readonly {
+         background-color: unset;
+         border: unset;
+         padding: unset;
+      }
+
+      &.state-hyperlink {
+       @include component-color("link", standard());
+      }
+
+      &.state-required {
+         @include component-color("field", required());
+
+         &.state-filled {
+            @include component-color("field", standard());
+         }
+      }
+
+
+      &.state-disabled {
+         @include font-size(smaller());
+         @include interaction(forbidden());
+         @include component-color("field", disabled());
+
+         &::placeholder {
+            // Zero opacity hides the placeholder
+            opacity: 0;
+         }
+      }
+   }
+
+   
+   

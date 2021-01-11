@@ -1,0 +1,24 @@
+<div class="horizontal-layout page-navigator page-navigator-layout">
+  <div class="horizontal-layout__item page-navigator-layout__information">
+    <span class="page-navigator__label">{{currentFirstItem}} - {{currentLastItem}} {{ "PAGE.NAVIGATOR.OF" | translate }} {{totalItemsCount}} | {{totalPagesCount}} {{ "PAGE.NAVIGATOR.PAGES" | translate }}</span>
+  </div>
+
+  <div class="horizontal-layout__item page-navigator__paginator page-navigator-layout__paginator">
+    <div class="page-navigator__button page-navigator-layout__button" [class.is-enabled-state]="canNavigatePrevious" (click)="previousPage()" [attr.data-testid]="previousCommandTestId">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"  class="page-navigator-layout__icon" title="{{ 'TOOLTIP.PREVIOUS' | translate }}">
+        <polygon fill="currentColor" points="7 10 12 15 12 5" />
+      </svg>
+    </div>
+    <div class="page-navigator__separator page-navigator-layout__separator"></div>
+    <div class="page-navigator__page-number page-navigator-layout__page-number">
+      <input numeric="true" decimals="0" type="text" class="page-navigator__input page-navigator-layout__input" (change)="loadPage()" [(ngModel)]="currentPage" [attr.data-testid]="testId"/>
+    </div>
+    <div class="page-navigator__separator page-navigator-layout__separator"></div>
+    <div class="page-navigator__button page-navigator-layout__button" [class.is-enabled-state]="canNavigateNext" (click)="nextPage()" [attr.data-testid]="nextCommandTestId">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"  class="page-navigator-layout__icon"  title="{{ 'TOOLTIP.NEXT' | translate }}">
+        <polygon fill="currentColor" points="13 10 8 5 8 15" />
+      </svg>
+    </div>
+  </div>
+
+</div>

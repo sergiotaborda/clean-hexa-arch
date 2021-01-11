@@ -1,0 +1,134 @@
+<div class="page login horizontal-layout must-expand-max-state">
+
+   <div class="horizontal-layout__item is-seven-tenths-state vertical-layout login__brand">
+      <div class="vertical-layout__item login__brand-header horizontal-layout">
+         <div class="horizontal-layout__item"></div>
+         <div class="horizontal-layout__item login__logo">
+            <!-- <icon type="app-logo"></icon> -->
+         </div>
+         <div class="horizontal-layout__item"></div>
+      </div>
+      <div class="vertical-layout__item must-expand-double-state login__brand-footer horizontal-layout">
+         <div class="horizontal-layout__item"></div>
+         <div class="horizontal-layout__item  vertical-layout">
+            <div class="vertical-layout__item "></div>
+            <div class="vertical-layout__item vertical-layout">
+            <icon class="login__icon" type="app-logo"></icon> 
+            <span class="login__brand-title">{{ 'APPLICATION.TITLE' | translate }}</span>
+            <span class="login__brand-subtitle">{{ 'APPLICATION.BRAND_SUBTITLE' | translate }}</span>
+            </div>
+            <div class="vertical-layout__item must-expand-double-state"></div>
+         </div>
+         <div class="horizontal-layout__item"></div>
+      </div>
+   </div>
+
+   <div class="horizontal-layout horizontal-layout__item is-three-tenths-state">
+      <div class="horizontal-layout__item"></div>
+
+      <div class="horizontal-layout__item horizontal-layout__item vertical-layout">
+         <div class="vertical-layout__item is-three-tenths-state"></div>
+
+         <div class="vertical-layout__item vertical-layout login__header">
+            <span class="login__subtitle">{{ 'APPLICATION.SUBTITLE' | translate }}</span>
+            <span class="login__title">{{ 'APPLICATION.TITLE' | translate }}</span>
+            <div class="login__line"></div>
+         </div>
+
+         <div class="vertical-layout__item must-fit-content-state form form-layout form-layout--login">
+            <div class="form-layout__header">
+            <span class="form__title">{{ 'LOGIN.TITLE' | translate }}</span>
+            </div>
+
+            <div class="form-layout__content">
+               <div class="form-layout__field form-layout__field--login form__field horizontal-layout" [class.has-value-state]="credentials.username">
+                  <input name="username" 
+                        [(ngModel)]="credentials.username"
+                        placeholder="{{ 'LOGIN.USERNAME' | translate }}"
+                        class="form-layout__input form__input form__input--login"
+                        required>
+                  <div class="form-layout__input-icon">
+                     <icon class="form__icon form-layout__icon" type="person"></icon>
+                  </div>
+               </div>
+
+               <div class="form-layout__field-separator"></div>
+
+               <div class="form-layout__field form-layout__field--login form__field horizontal-layout" [class.has-value-state]="credentials.password">
+                  <input name="password" 
+                        [(ngModel)]="credentials.password"
+                        type="password"
+                        placeholder="{{ 'LOGIN.PASSWORD' | translate }}"
+                        class="form-layout__input form__input form__input--login"
+                        required>
+                  <div class="form-layout__input-icon">
+                      <icon class="form__icon form-layout__icon is-compacted-state" type="lock"></icon>
+                  </div>
+               </div>
+
+               <div class="form-layout__field form-layout__field--login form__field horizontal-layout" [class.has-value-state]="credentials.password">
+                  <text-field 
+                     block="form-layout__input form__input form__input--login" 
+                     placeholder="USERNAME.LOGIN.PLACEHOLDER"
+                     [isRequired]="true" 
+                     [(ngModel)]="credentials.username"
+                     >
+                  </text-field>
+                   <text-field 
+                     block="form-layout__input form__input form__input--login" 
+                     placeholder="USERNAME.LOGIN.PLACEHOLDER"
+                     [isReadonly]="true"
+                     [(ngModel)]="credentials.username"
+                     >
+                  </text-field>
+                  <text-field 
+                     block="form-layout__input form__input form__input--login" 
+                     placeholder="USERNAME.LOGIN.PLACEHOLDER"
+                     [isEnabled]="false"
+                     [(ngModel)]="credentials.username"
+                     >
+                  </text-field>
+               </div>
+               <div class="form-layout__field form-layout__field--login form__field horizontal-layout" [class.has-value-state]="credentials.password">
+                  <password-field 
+                     block="form-layout__input form__input form__input--login" 
+                     placeholder="USERNAME.LOGIN.PLACEHOLDER"
+                     [isRequired]="true" 
+                     [(ngModel)]="credentials.password"
+                     >
+                  </password-field>
+                   <password-field 
+                     block="form-layout__input form__input form__input--login" 
+                     placeholder="USERNAME.LOGIN.PLACEHOLDER"
+                     [isReadonly]="true"
+                     [(ngModel)]="credentials.password"
+                     >
+                  </password-field>
+                  <password-field 
+                     block="form-layout__input form__input form__input--login" 
+                     placeholder="USERNAME.LOGIN.PLACEHOLDER"
+                     [isEnabled]="false"
+                     [(ngModel)]="credentials.password"
+                     >
+                  </password-field>
+               </div>
+            </div>
+
+            <div class="form-layout__toolbar form-layout__toolbar--login toolbar-layout">
+               <command 
+                  block="toolbar-layout__item form__button" 
+                  kind="primary" 
+                  caption="LOGIN.COMMAND.ENTER"  
+                  (action)="onLogin()" 
+               ></command>
+            </div>
+         </div>
+
+         <div class="vertical-layout__item must-expand-double-state"></div>
+      </div>
+
+       <div class="horizontal-layout__item"></div>
+   </div>
+</div>
+
+

@@ -1,0 +1,64 @@
+<div class="horizontal-layout navigation-menu">
+  <div class="horizontal-layout__item split-layout">
+
+    <div class="split-layout__left horizontal-layout navigation-menu__brand">
+      <icon class="horizontal-layout__item navigation-menu__logo" type="app-logo"></icon>
+      <div class="navigation-menu__separator"></div>
+      <div class="horizontal-layout__item vertical-layout">
+          <span class="vertical-layout__item navigation-menu__title">
+            {{ "APPLICATION.TITLE" | translate}}
+          </span>
+        <span class="vertical-layout__item navigation-menu__version">
+            {{ version }}
+          </span>
+      </div>
+
+    </div>
+
+    <div class="split-layout__right toolbar-layout toolbar-layout--menu must-expand-max-state">
+      <ng-container *ngFor="let menu of menu.children;">
+        <div class="toolbar-layout__item toolbar-layout__item--menu">
+          <button type="button" class="command command--menu navigation-menu__button"
+                  *ngIf="menu.isVisible && !menu.haveSubmenu"
+                  [class.is-selected-state]="menu.isSelected"
+                  (click)="navigateTo(menu)"
+                  [attr.data-testId]="menu.testId"
+          >
+            <icon class="command__icon" *ngIf="menu.iconName" [type]="menu.iconName"></icon>
+            <span class="command__caption">{{ menu.captionKey | translate}}</span>
+          </button>
+
+          <button type="button" class="command command--menu button-layout navigation-menu__button"
+                  data-testid="administration_menu"
+                  *ngIf="menu.isVisible && menu.haveSubmenu"
+                  [class.is-selected-state]="menu.isSelected"
+                  (click)="openOrCloseSubmenu(menu)"
+          >
+            <icon class="command__icon" *ngIf="menu.iconName" [type]="menu.iconName"></icon>
+            <span class="command__caption">{{ menu.captionKey | translate}}</span>
+            <span class="command__dropdown">{{ arrow(menu) }}</span>
+          </button>
+          <div *ngIf="menu.haveSubmenu && menu.isSubmenuOpen" class="toolbar-layout toolbar-layout--submenu">
+            <div *ngFor="let child of menu.children">
+              <div *ngIf="child.isVisible" (click)="submenuNavigate(menu, child)" [attr.data-testId]="child.testId"
+                   class="toolbar-layout__item command command--submenu">
+                {{ child.captionKey | translate }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="toolbar-layout__separator" *ngIf="menu.isVisible"></div>
+      </ng-container>
+
+      <div class="toolbar-layout__item toolbar-layout__item--menu">
+        <div class="navigation-menu__user">
+          <icon class="navigation-menu__icon" type="person"></icon>
+          <div class="navigation-menu__separator"></div>
+          <span class="navigation-menu__caption">{{ userFullName }}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

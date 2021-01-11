@@ -1,0 +1,245 @@
+@import "color-palette";
+
+//---
+//- Color Semantics
+//-
+//- applies pallete to purpose
+//---
+
+$colors: (
+   primary: (
+      muted: $ghost-white,
+      washed: rgba($voss-blue, 0.2),
+      default : $vox-blue,
+      accent : $voss-blue,
+      lit: $bluish,
+   ),
+   secondary: (
+      default : $vox-blue,
+      accent : $voss-blue,
+   ),
+   selection: (
+      default : $vox-blue,
+      accent : $voss-blue,
+   ),   
+   shadow : (
+      default: $ghost-black,
+   ),
+   background:(
+      muted: rgba($grey-4, 0.55),
+      default : $white,
+   ),
+   border:(
+      muted: $grey-8,
+      default : $grey-6,
+   ),
+   foreground:(
+      muted: $grey-8,
+      washed: $grey-6,
+      default : $grey-2,
+      accent: $grey-3,
+   ),   
+   info: ( // an octave above foreground. info default is like a specialforeground
+      default: $blue-grey,
+   ),
+   danger : (
+      washed: $ghost-red,
+      default: $red,
+      accent: $red,
+   ),
+   warning: (
+      washed : $ghost-yellow,
+      default: $yellow,
+      accent: $golden-yellow,
+   ),
+
+   success: (
+      default: $green,
+   )
+);
+
+
+$semantic:(
+
+   field:(
+      foreground: (
+         standard : color(foreground()),
+         disabled : color(foreground(), washed())
+      ),
+      placeholder: (
+         standard : color(foreground(), washed()),
+         required : color(foreground()),
+         disabled : color(foreground(), muted())
+      ),
+      background: (
+         standard : color(background()),
+         required : color(warning(), washed()),
+         disabled : color(foreground(), muted())
+      ),
+      border: (
+         standard : color(border()),
+         disabled : color(border())
+      ),
+      shadow: (
+         standard : color(shadow()),
+      )
+   ),
+   label:(
+      foreground: (
+         standard : color(foreground()),
+         disabled : color(foreground(), muted())
+      ),
+      background: (
+         standard : color(background()),
+         disabled : color(background(), muted())
+      ),
+      border: (
+         standard : color(border()),
+         disabled : color(border(), muted())
+      ),
+      shadow: (
+         standard : color(shadow()),
+      )
+   ),
+   link:(
+      foreground: (
+         standard : color(primary()),
+         disabled : color(primary(), washed())
+      ),
+      background: (
+         standard : color(background()),
+         disabled : color(background(), muted())
+      ),
+   ),
+   output:(
+      foreground: (
+         standard : color(foreground()),
+         disabled : color(foreground(), muted())
+      ),
+      background: (
+         standard : color(background()),
+         disabled : color(background(), muted())
+      ),
+   ),
+   button:(
+      foreground: (
+         standard : color(foreground()),
+         primary : color(background()),
+         secondary : color(primary()),
+         disabled : color(foreground(), muted()),
+         hover : color(background(), lit()),
+      ),
+      background: (
+         standard : color(background()),
+         primary : color(primary()),
+         secondary : color(background()),
+         disabled : color(background(), muted()),
+         hover : color(foreground(), lit()),
+      ),
+      border: (
+         standard : color(border()),
+         disabled : color(border(), muted()),
+         hover: color(border(), lit())
+      ),
+      shadow: (
+         standard : color(shadow()),
+      )
+   ),
+   separator:(
+      foreground: (
+         standard : color(foreground(), muted())
+      ),
+      background: (
+         standard : color(background())
+      ),
+   ),
+   grid-header:(
+      foreground: (
+         standard : color(foreground())
+      ),
+      background: (
+         standard : color(background())
+      ),
+   ),
+   grid-column:(
+      foreground: (
+         standard : color(foreground())
+      ),
+      background: (
+         standard : color(background())
+      ),
+   ),
+   grid-row:(
+      foreground: (
+         standard : color(foreground())
+      ),
+      background: (
+         standard : color(background())
+      ),
+      border:(
+         standard : color(foreground(), muted())
+      )
+   ),
+   grid-cell:(
+      foreground: (
+         standard : color(foreground())
+      ),
+      background: (
+         standard : color(background())
+      ),
+   )
+
+);
+
+
+// Backgrounds
+$background-color-standard: color(background());
+$background-color-primary: color(primary());
+$background-color-primary-accent: color(primary(), accent());
+$background-color-primary-washed: color(primary(), washed());
+$background-color-primary-ghost: $ghost-vox-blue;
+$background-color-modal:  color(background(), muted());
+$background-color-grid-header: $background-color-standard;
+$background-color-grid-even: color(foreground(), muted());
+$background-color-grid-odd: $background-color-standard;
+$background-color-filter: color(foreground(), muted());
+$background-color-load-panel: color(primary(), muted());
+$background-color-accent:  color(foreground(), muted());
+$background-color-accent-washed: $grey-7;
+$background-color-disabled: color(foreground(), muted());
+$background-color-button-radio-selected: $grey-4;
+$background-color-information: color(foreground(), muted());
+$background-color-warning: color(warning(), lit());
+$background-color-unsafe: color(danger(), washed());
+$background-color-information-separator: color(foreground(), washed());
+
+$background-color-gradient-special: color(primary(), lit()); 
+
+// Foregrounds
+$foreground-color-standard: color(foreground());
+$foreground-color-primary: color(background());
+$foreground-color-primary--reverse: color(primary());
+$foreground-color-primary--accent: color(primary(), accent());
+$foreground-color-primary-ghost: $ghost-white;
+$foreground-color-placeholder: color(foreground(), washed());
+$foreground-color-standard-accent: color(foreground(), accent()); 
+$foreground-color-label: $grey-4;
+$foreground-color-grid-header: $foreground-color-standard;
+$foreground-color-grid-even: $foreground-color-standard;
+$foreground-color-grid-odd: $foreground-color-standard;
+$foreground-color-separator: color(foreground(), washed());
+$foreground-color-filter: $background-color-standard;
+$foreground-color-label-accent: color(info());
+$foreground-color-disabled: color(foreground(), washed());
+$foreground-color-data: $grey-5;
+$foreground-color-information: color(foreground());
+
+$foreground-color-title-special: color(info()); // Specials are used in login and other non standard pages
+
+// Borders
+$border-color-standard: color(foreground(), washed());
+$border-color-accent: $grey-5;
+$border-color-primary: color(primary());
+
+
+$box-shadow-color: color(shadow());

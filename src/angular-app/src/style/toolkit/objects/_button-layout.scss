@@ -1,0 +1,52 @@
+// @import '../tools/padding-stamps';
+// @import '../tools/border-stamps';
+@import '../tools/functions';
+
+.button-layout {
+  display: flex;
+  align-items: center;
+  min-height: fixed-length(30);
+//   @include radius-border-default;
+//   @include smallest-padding;
+//   @include smaller-horizontal-padding;
+
+  &.is-compacted-state {
+    @include square-shape(100%);
+  //  @include smallest-padding;
+  }
+
+  &.is-expandable-state {
+    flex-direction: column;
+    height: unset;
+  }
+}
+
+  .button-layout__content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    &.is-expandable-state {
+    //  @include smaller-vertical-padding;
+      padding-bottom: unset;
+    }
+  }
+
+  .button-layout__caption {
+    min-width: fixed-length(50);
+    display: block;
+   //  @include smaller-horizontal-padding;
+    margin-top: fixed-length(2);
+    flex-grow: 1;
+    text-align: left;
+  }
+
+  .button-layout__icon {
+    display: block;
+    padding-bottom: unset;
+    @include square-shape(fixed(20));
+
+    &.is-compacted-state {
+      @include square-shape(fixed(17));
+    }
+  }

@@ -1,0 +1,166 @@
+//---
+//- Page general sizes 
+//---
+$base-width: 1366px;
+$base-height: 768px;
+
+$base-gutter: 30px;
+
+$base-usable-width: $base-width - 2 * $base-gutter;
+$base-usable-heigth: $base-height;
+
+//--
+// Field sizes 
+// --
+$field-separator-size: 20px;
+$field-width-base-size: 100px;
+$field-height-base-size: 30px;
+
+
+//--
+// Grid Column sizes 
+// --
+$reference-column-size: 250;
+
+//---
+//- Font base size 
+//---
+$font-base-size: 10px; // 62.5%; // equivalent to 10px
+
+$sizes: (
+   border-radius:(
+      smaller: 1px,
+      small: 2px,  
+      default: 3px,
+      big: 5px,  
+      bigger: 10px    
+   ),
+   icon: (
+      small: 17px, 
+      default: 20px  
+   ),
+   padding: (
+      smallest: 5px, 
+      smaller: 10px,
+      small: 12px, 
+      default: 20px,
+      big: 25px,
+      bigger: $base-gutter,
+      biggest: 40px,
+   ),
+   border: (
+      default: 1px,
+      big: 2px,
+      bigger: 3px,
+      biggest: 5px 
+   ),
+   field-width: (
+      small: ($field-width-base-size * 6) /10, 
+      default: $field-width-base-size,
+      big: 2 * $field-width-base-size + $field-separator-size,
+      bigger: 3 * $field-width-base-size + 2 * $field-separator-size
+   ),
+   field-height: (
+      small: ($field-height-base-size * 6) /10, 
+      default: $field-height-base-size,
+      big: 2 * $field-height-base-size,
+      bigger: 3 * $field-height-base-size
+   ),
+   column-width:(
+      smallest: 100,
+      small: $reference-column-size / 2,
+      default: $reference-column-size,
+      big: $reference-column-size * 2
+   ),
+   column-height:(
+      smaller: 40px,
+      small: 45px,
+      default: 50px,
+   ),
+   font-size: (
+      min: 1.1rem,
+      smallest: 1.2rem,
+      smaller: 1.4rem,
+      small: 1.6rem,
+      default: 1.8rem,
+      normal: 2.2rem,
+      big: 3.4rem,
+      bigger: 4.0rem,
+      biggest: 5.0rem,
+      max: 7.2rem
+   ),
+   font-weight: (
+      default: normal,
+      big: bold,
+      bigger: bolder,
+   )
+);
+
+$column-sizes:(
+   status: smallest(),
+   type: default(),
+   code: smallest(),
+   date: small(),
+   description: big(),
+   number: small(),
+   amount: small(),
+   input:  default(),
+);
+
+
+// sizes
+@function smallest(){
+   @return "smallest";
+}
+
+@function smaller(){
+   @return "smaller";
+}
+
+@function small(){
+   @return "small";
+}
+
+@function default(){
+   @return "default"; 
+}
+
+@function big(){
+   @return "big";
+}
+
+@function bigger(){
+   @return "bigger";
+}
+
+@function biggest(){
+   @return "biggest"; 
+}
+
+@function unset(){
+   @return "unset"; 
+}
+
+@function sizeOf($objectName, $size:"default") {
+   $thing : map-get($sizes, $objectName);
+   @if ($thing != null){
+      $value: map-get($thing, $size);
+      @debug "Size of #{$objectName} is #{$size}";
+      @return $value;
+   }
+   @warn "No size #{$size} for length  #{$objectName}";
+   @return unset; 
+}
+
+@function columnSizeOf($columnType:"description") {
+   $size : map-get($column-sizes, $columnType);
+   @if ($size == null){
+      $size : "default";
+   }
+   @return sizeOf("column-width", $size);
+}
+
+@function icon-size($size:"default"){
+   @return sizeOf("icon",$size);
+}
+

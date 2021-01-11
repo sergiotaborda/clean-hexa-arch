@@ -1,0 +1,23 @@
+
+@function none(){
+   @return "none";
+}
+
+@function forbidden(){
+   @return "forbidden";
+}
+
+@function clickable(){
+   @return "clickable";
+}
+
+@mixin interaction($mode:"none"){
+
+   @if $mode == "clickable"{
+      cursor: pointer;
+   } @else if $mode == "forbidden"{
+      cursor: not-allowed;
+   } @else {
+      cursor: default;
+   }
+}

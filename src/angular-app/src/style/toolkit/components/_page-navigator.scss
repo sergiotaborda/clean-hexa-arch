@@ -1,0 +1,89 @@
+@import "../tools/tools";
+
+.page-navigator {
+   // layout
+  @include padding(bigger());
+  @include horizontal-padding(standard());
+}
+
+.page-navigator__button {
+     
+  // layout 
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+   // style 
+  @include interaction(clickable());
+      
+  @include component-color("button", disabled());
+
+  @include square-shape(sizeOf("field-height"));
+
+  &.is-enabled-state {
+     @include component-color("button", standard());
+  }
+
+}
+
+.page-navigator__page-number {
+  @include square-shape(sizeOf("field-height"));
+}
+
+.page-navigator__input {
+   // style 
+  @include component-color("field", standard());
+  @include font-size(smaller());
+  @include font-weight(default());
+      
+  border: unset;
+  text-align: center;
+  
+  // layout 
+  @include square-shape(100%);
+}
+
+.page-navigator__label {
+  @include font-size(smaller());
+  @include font-weight(default());
+  @include component-color("output", standard());
+  white-space: nowrap;
+}
+
+.page-navigator__paginator {
+  // layout 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+   
+  // style 
+  @include border-size(default());
+  @include border-rounding(default());
+}
+
+.page-navigator__separator {
+  // layout 
+  width: fixed(1);
+  height: sizeOf("field-height");
+  
+  // style 
+  @include component-color("separator", standard());
+  
+}
+
+.page-navigator__information {
+ // layout
+  height: sizeOf("field-height");
+  display: flex;
+  align-items: center;
+  
+  @include horizontal-padding(smallest());
+
+}
+
+.page-navigator__icon {
+   @include square-shape(icon-size(small()));
+}
+

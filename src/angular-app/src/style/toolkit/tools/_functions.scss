@@ -1,0 +1,158 @@
+@import "../settings/settings";
+
+@function fixed( $length ) {
+  @return $length * 1px;
+}
+
+@function relative-width ( $referenceWidth ){
+  @return ((1px * $referenceWidth) / $base-width) * 100vw ;
+}
+
+@function relative-height ( $referenceHeight ){
+  @return ((1px * $referenceHeight)/ $base-height) * 100vh ;
+}
+
+@mixin gutter-width( ){
+   width: $base-gutter;
+}
+
+@mixin usable-width( ){
+   width: $base-usable-width;
+}
+
+@mixin usable-height( ){
+   width: $base-usable-height;
+}
+
+
+@mixin vertical-padding($size) {
+
+   @if($size == "unset"){
+      padding-top: unset;
+      padding-bottom: unset;
+   } @else {
+      $value: sizeOf("padding", $size);
+
+      padding-top: $value;
+      padding-bottom: $value;
+   }
+
+}
+
+@mixin horizontal-padding($size) {
+
+   @if($size == "unset"){
+      padding-left: unset;
+      padding-right: unset;
+   } @else {
+      $value: sizeOf("padding", $size);
+
+      padding-left: $value;
+      padding-right: $value;
+   }
+   
+}
+
+@mixin padding($size) {
+
+   @if($size == "unset"){
+      padding-left: unset;
+      padding-right: unset;
+      padding-top: unset;
+      padding-bottom: unset;
+   } @else {
+      $value: sizeOf("padding", $size);
+
+      padding-left: $value;
+      padding-right: $value;
+      padding-top: $value;
+      padding-bottom: $value;
+   }
+   
+}
+
+@mixin z-index($layer:"overlay", $isAnimation: false) {
+   z-index: zIndexOf($layer,$isAnimation);
+}
+
+@mixin font-size($size) {
+   $value : sizeOf("font-size", $size);
+   font-size: $value;
+   line-height: $value;
+}
+
+@mixin font-weight($size) {
+   font-weight: sizeOf("font-weight", $size);
+}
+
+@mixin field-width($size) {
+   width: sizeOf("field-width", $size);
+}
+
+// rounding border
+
+@mixin border-rounding($size:"default") {
+
+   @if($size == "unset" or $size == "none" ){
+      border-radius: unset;
+   } @else {
+      border-radius: sizeOf("border-radius", $size);
+   }
+   
+}
+
+@mixin no-border() {
+  border: unset;
+}
+
+@mixin border-size($sizes...) {
+
+   @warn "Sizes are: #{$sizes}";
+   border-style: solid;
+   @if length($sizes) == 1 {
+      $size: sizeOf("border", nth($sizes, 1));
+      @warn "Single size for  #{nth($sizes, 1)} is #{$size}";
+      border-top-width: $size;
+      border-right-width: $size;
+      border-bottom-width: $size;
+      border-left-width: $size;
+   } 
+   @if length($sizes) >= 2 {   
+      $value: sizeOf("border", nth($sizes, 1));
+      @if ($value != null){
+          border-top-width: $value; 
+      }
+      $value: sizeOf("border", nth($sizes, 2));
+      @if ($value != null){
+          border-right-width: $value; 
+      }
+   }
+   @if length($sizes) >= 3 {  
+      $value: sizeOf("border", nth($sizes, 3));
+      @if ($value != null){
+          border-bottom-width: $value; 
+      }
+      
+   }
+   @if length($sizes) >= 4 {   
+      $value: sizeOf("border", nth($sizes, 4));
+      @if ($value != null){
+          border-left-width: $value; 
+      }
+   }
+
+}
+
+// shapes
+
+@mixin square-shape( $size ){
+   width: $size;
+   height: $size;
+}
+
+@mixin pill-shape( $size ){
+   width: $size;
+   height: $size;
+   border-radius: sizeOf("border-radius", "default");
+   border-width: sizeOf("border", "default");
+}

@@ -1,0 +1,140 @@
+@import "color-semantics";
+
+@function color($color , $variant:"default"){
+   $thing : map-get($colors, $color);
+   @if ($thing != null){
+      $value: map-get($thing, $variant);
+
+      @if $value == null {
+         @if $variant == "default"{
+            @return rgb(125,125,125);
+         } @else if $variant == "muted"{
+           @return mix(color($color, "default"), black, 20%);
+         } @else if $variant == "washed"{
+           @return mix(color($color, "default"), black, 10%);
+         } @else if $variant == "accent"{
+            @return mix(color($color, "default"), white, 10%);
+         } @else if $variant == "lit"{
+            @return mix(color($color, "default"), white, 20%);
+         }
+      }
+ 
+
+      @return $value;
+   }
+   @warn "No colors for #{$color}";
+   @return unset;
+} 
+
+@function semantic-color($component , $property,  $state:"standard"){
+   $thing : map-get($semantic, $component);
+   @if ($thing != null){
+      $object : map-get($thing, $property);
+      @if ($object != null){
+         $value : map-get($object, $state);
+         @if $value != null {
+            @return $value;
+         }
+         @else {
+            @return map-get($object, "standard");
+         }
+      }
+      @warn "No semantic colors for property #{$property} in component #{$component}";
+   }
+   @warn "No semantic colors for #{$component}";
+   @return unset;
+} 
+
+@mixin component-color($component, $state:"standard") {
+   background-color:  semantic-color($component, "background", $state);
+   color:  semantic-color($component, "foreground", $state);
+   border-color:  semantic-color($component, "border", $state);
+
+   &::placeholder {
+      color: semantic-color($component, "placeholder", $state);
+   }
+}
+ 
+// component states
+@function standard(){
+   @return "standard";
+}
+
+@function disabled(){
+   @return "disabled";
+}
+
+@function primary(){
+   @return "primary";
+}
+
+@function secondary(){
+   @return "secondary";
+}
+
+@function hover(){
+  @return "hover";
+}
+
+@function required(){
+   @return "required";
+}
+
+// color families
+
+@function background(){
+   @return "background";
+}
+
+@function foreground(){
+   @return "foreground";
+}
+
+@function primary(){
+   @return "primary";
+}
+
+@function secondary(){
+   @return "secondary";
+}
+
+@function shadow(){
+   @return "shadow";
+}
+
+@function selection(){
+   @return "selection";
+}
+
+@function warning(){
+   @return "warning";
+}
+
+@function danger(){
+   @return "danger";
+}
+
+@function border(){
+   @return "border";
+}
+
+// variants
+@function lit(){
+   @return "lit";
+}
+
+@function accent(){
+   @return "accent";
+}
+
+@function default(){
+   @return "default";
+}
+
+@function washed(){
+   @return "washed";
+}
+
+@function muted(){
+   @return "muted";
+}

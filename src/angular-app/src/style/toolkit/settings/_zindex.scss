@@ -1,0 +1,47 @@
+$zindex:(
+   base: 0,
+   overlay: 10,
+   dropdown: 50,
+   modal: 100,
+   dialog: 200,
+   glass: 10000,
+   above-glass: 20000,
+);
+
+
+// layers
+@function overlay(){
+   @return "overlay";
+}
+
+@function dropdown(){
+   @return "dropdown";
+}
+
+@function modal(){
+   @return "modal";
+}
+
+@function dialog(){
+   @return "dialog";
+}
+
+@function glass(){
+   @return "glass";
+}
+
+@function above-glass(){
+   @return "above-glass";
+}
+
+@function zIndexOf($layer:"base", $isAnimation: false) {
+  $value: map-get($zindex, $layer);
+  @if ($value == null){
+     $value : 0;
+  }
+  @if ($isAnimation){
+     $value : $value + 5; 
+  }
+  
+  @return $value;
+}

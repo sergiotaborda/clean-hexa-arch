@@ -1,0 +1,14 @@
+//--
+// Remove requirement border in Firefox
+//--
+input:required {
+  box-shadow: none;
+}
+
+//--
+// Allow for a hidden attribute that mantains the element in place but invisible
+//--
+[hidden] {
+  visibility: hidden;
+  display: initial;
+}

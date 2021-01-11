@@ -1,0 +1,73 @@
+@import "../tools/functions";
+
+$base-z: 100;
+$overall-z: $base-z * 10;
+
+.wait-panel-layout {
+  position: relative;
+  @include square-shape(100%);
+}
+
+  .wait-panel-layout__content {
+   @include square-shape(100%);
+  }
+
+  .wait-panel-layout__glass {
+    z-index: $base-z;
+    @include square-shape(100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+
+    &.is-overlay-all-page-state {
+      position: fixed;
+      top: 0;
+      left: 0;
+      @include square-shape(100%);
+      z-index: $overall-z;
+      align-items: center;
+    }
+  }
+
+  .wait-panel-layout__front {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .wait-panel-layout__area {
+    position: sticky;
+    top: 0;
+  }
+
+  .wait-panel-layout__spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wait-panel-layout__description {
+    display: block;
+    max-width: fixed(300);
+    margin-top: fixed(15);
+    align-self: center;
+  }
+
+  .wait-panel-layout__logo {
+    position: absolute;
+    align-self: center;
+    justify-self: center;
+    @include square-shape(fixed(50));
+  }
+
+  .wait-panel-layout__separator {
+    min-height: fixed(250);
+    max-height: fixed(500);
+
+    &.is-overlay-all-page-state {
+      min-height: unset;
+      max-height: unset;
+    }
+  }

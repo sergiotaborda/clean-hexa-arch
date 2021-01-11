@@ -1,0 +1,133 @@
+
+<page>
+   <page-top>
+       <navigation-menu></navigation-menu>
+   </page-top>
+   <page-content>
+
+   </page-content>
+</page>
+
+<div class="vertical-layout must-expand-max-state">
+
+  <div class="vertical-layout__item must-fit-content-state horizontal-layout">
+
+    <div class="horizontal-layout__item vertical-layout">
+
+      <div class="vertical-layout__item filter-navigation-bar horizontal-layout">
+        <form class="page__navigation form form--filter form-layout split-layout">
+
+          <div class="form-layout__content split-layout__left">
+            <div class="form-layout__group">
+              <div class="form-layout__label">
+                <span class="form__label">{{ "BOOK.FILTER" | translate }}</span>
+              </div>
+              <text-field
+                [(ngModel)]="filter.freeSearch"
+                block="form__field form-layout__field is-description-state"
+                name="freeSearch"
+                testId="free-search"
+                [placeholder]="'BOOK.FILTER.FREE_SEARCH.PLACEHOLDER'"
+              >
+              </text-field>
+            </div>
+
+            <div class="form-layout__group-separator"></div>
+
+            <div class="form-layout__group">
+              <div class="form-layout__label form__label form__label--filter is-blank-state">&nbsp;</div>
+              <div class="form-layout__toolbar toolbar toolbar-layout toolbar-layout--actions">
+                <div class="toolbar-layout__item toolbar-layout__item--search">
+                   <command caption="COMMAND.CAPTION" kind="primary" iconType="search" (action)="applyFilter()"></command>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-layout__content split-layout__right">
+            <div class="form-layout__group">
+              <div class="form-layout__label form__label form__label--filter is-blank-state">&nbsp;</div>
+              <div class="form-layout__toolbar toolbar toolbar-layout toolbar-layout--actions">
+                <div class="toolbar-layout__item">
+                  <command caption="COMMAND.ADD_NEW" kind="primary" iconType="add" (action)="addItem()"></command>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="vertical-layout__item horizontal-layout">
+
+    <div class="horizontal-layout__item">
+      <div class="vertical-layout" *ngIf="pageContainer.hasPageItems">
+        <div class="vertical-layout__item page__scrollable">
+     
+        
+          <table class="datagrid">
+            <thead>
+            <tr class="datagrid__header">
+              <th class="datagrid__column is-name-column-state is-sticky-state">
+                <div class="datagrid__column-content">
+              
+                    {{ "BOOK.NAME" | translate }}
+              
+                </div>
+              </th>
+              <th class="datagrid__column is-name-column-state is-sticky-state">
+                <div class="datagrid__column-content ">
+                  
+                    {{ "BOOK.NAME" | translate }}
+             
+                </div>
+              </th>
+              <th class="datagrid__column is-name-column-state is-sticky-state">
+                <div class="datagrid__column-content ">
+                  {{ "BOOK.NAME" | translate }}
+                </div>
+              </th>
+              <th class="datagrid__column is-status-column-state is-sticky-state">
+                <div class="datagrid__column-content  is-status-column-state">
+          
+                    {{ "BOOK.NAME" | translate }}
+  
+                </div>
+              </th>
+              <th class="datagrid__column is-actions-column-state is-sticky-state"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of pageContainer.currentPageItems" class="datagrid__row">
+              <td class="datagrid__cell is-name-column-state">{{ item.name }}</td>
+              <td class="datagrid__cell is-name-column-state">{{ item.name }}</td>
+              <td class="datagrid__cell is-name-column-state">{{ item.name }}</td>
+              <td class="datagrid__cell is-status-column-state">
+                
+              </td>
+              <td class="datagrid__cell is-actions-column-state">
+                <div class="toolbar toolbar-layout">
+                  <div class="toolbar-layout__item">
+     
+                    <command caption="COMMAND.EDIT" kind="secondary" iconType="edit" mode="iconOnly" (action)="edit(item)"></command>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="vertical-layout__item attract-layout attract-layout--east">
+          <page-navigator [pageContainer]="pageContainer" testId="user-paginator"></page-navigator>
+        </div>
+      </div>
+
+      
+    </div>
+    
+  </div>
+  
+</div>
