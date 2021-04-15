@@ -20,7 +20,7 @@
           <div class="form-layout__content split-layout__left">
             <div class="form-layout__group">
               <div class="form-layout__label">
-                <span class="form__label">{{ "BOOK.FILTER" | translate }}</span>
+                <span class="form__label">{{ "BOOK.FILTER.TITLE" | translate }}</span>
               </div>
               <text-field
                 [(ngModel)]="filter.freeSearch"
@@ -38,7 +38,7 @@
               <div class="form-layout__label form__label form__label--filter is-blank-state">&nbsp;</div>
               <div class="form-layout__toolbar toolbar toolbar-layout toolbar-layout--actions">
                 <div class="toolbar-layout__item toolbar-layout__item--search">
-                   <command caption="COMMAND.CAPTION" kind="primary" iconType="search" (action)="applyFilter()"></command>
+                   <command caption="COMMAND.SEARCH" kind="primary" iconType="search" (action)="applyFilter()"></command>
                 </div>
               </div>
             </div>
@@ -80,7 +80,7 @@
               <th class="datagrid__column is-name-column-state is-sticky-state">
                 <div class="datagrid__column-content ">
                   
-                    {{ "BOOK.NAME" | translate }}
+                    {{ "BOOK.NAME" | translate }} 
              
                 </div>
               </th>

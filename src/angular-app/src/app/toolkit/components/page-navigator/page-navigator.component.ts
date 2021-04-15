@@ -1,5 +1,6 @@
 import { Component, Input} from "@angular/core";
 import { PageContainer } from 'src/app/commons/model/page-container.model';
+import { UiToolkit } from '../../ui-toolkit';
 
 @Component({
   selector: "page-navigator",
@@ -9,6 +10,23 @@ export class PageNavigatorComponent {
 
   @Input() testId: string;
   @Input() pageContainer: PageContainer<any>;
+  
+  constructor(
+   private ui : UiToolkit
+  ){
+   
+  }
+  
+  get paginationText(){
+    return this.ui.translate("UI.PAGINATOR.DESCRIPTION");
+   /* { 
+       fromItem : this.currentFirstItem,
+       toItem: this.currentLastItem, 
+       totalItems: this.totalItemsCount,
+       currentPage : this.currentPage, 
+       totalPages: this.totalPagesCount
+      });*/
+  }
 
   public get previousCommandTestId(){
     return `${this.testId}-previous_command`;

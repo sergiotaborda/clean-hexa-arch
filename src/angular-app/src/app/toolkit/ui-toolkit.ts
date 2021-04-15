@@ -41,6 +41,9 @@ export class UiToolkit {
       ).subscribe(() => this.snotifyService.clear());
    }
 
+   public translate(key: string, params?: any){
+      return this.translationService.get(key, params);
+   }
 
    public handleError(error: Error): void {
       if (error instanceof ValidationError) {

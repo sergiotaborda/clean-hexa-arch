@@ -1,0 +1,25 @@
+{
+
+  "APPLICATION": {
+    "TITLE": "The Application",
+    "SUBTITLE": "Welcome to"
+  },
+  
+  "UI": {
+      "PAGINATOR.DESCRIPTION" : " Page  of "
+  },
+  
+  
+  "BOOK" : {
+     "NAME":"Name",
+     "FILTER": {
+      "TITLE" : "Filter",
+      "FREE_SEARCH.PLACEHOLDER" : "Search book"
+     }
+  },
+  
+  "COMMAND" : {
+     "ADD_NEW":"Add new",
+     "SEARCH":"Search"
+  }
+}
